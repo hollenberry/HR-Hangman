@@ -15,6 +15,9 @@ body {
   border: blue solid 1em;
   font-size: 1.2em;
 }
+canvas {
+  color: white;
+}
 .scaffold-top {
   width:6em;
   height:.5em;

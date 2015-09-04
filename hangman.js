@@ -59,8 +59,8 @@ function replaceLetter(stringIndex, newLetter, originalString) {
   originalString.substr(stringIndex + 1, originalString.length);
 }
 
-//This function
-
+//The most important function in the JS file. Checks, replaces, and initiates most
+//other functions after being initialized by onEnter below.
 function checkLetter (array, guess) {
   var letterFound = false;
   array.forEach(function(letter, index){
@@ -79,9 +79,23 @@ function checkLetter (array, guess) {
   return currentWord;
 }
 
+//What happens when you click enter.
 function onEnter (guess) {
   checkLetter(word, guess);
+    if (wrongLetters.length == 1) {
+      drawHead();
+    }
+    if (wrongLetters.length == 2) {
+      drawBody();
+    }
+    if (wrongLetters.length == 3) {
+      drawArms();
+    }
+    if (wrongLetters.length == 4) {
+      drawLeftLeg();
+    }
     if (wrongLetters.length == 5) {
+      drawRightLeg();
       lose();
     }
     if (word.join("") == currentWord) {
@@ -89,6 +103,52 @@ function onEnter (guess) {
     }
 }
 
+//Drawing the hangMan
+var hangMan = document.getElementById("hangMan");
+var context = hangMan.getContext('2d');
+
+var drawHead = function () {
+  context.fillStyle = "white";
+  context.beginPath();
+  context.arc(110, 30, 20, 0, 2*Math.PI);
+  context.closePath();
+  context.fill();
+}
+
+var drawBody = function() {
+  context.beginPath();
+  context.moveTo(110, 40);
+  context.lineTo(110, 110);
+  context.strokeStyle = "white";
+  context.stroke();
+}
+
+var drawArms = function() {
+context.beginPath();
+context.strokeStyle = "blue";
+context.moveTo(110, 60);
+context.lineTo(80, 100);
+context.moveTo(110, 60);
+context.lineTo(140, 100);
+context.stroke();
+}
+
+var drawLeftLeg = function() {
+context.beginPath();
+context.strokeStyle = "blue";
+context.moveTo(110, 110);
+context.lineTo(80, 130);
+context.stroke();
+}
+
+var drawRightLeg = function() {
+context.beginPath();
+context.moveTo(110, 110);
+context.lineTo(140, 130);
+context.stroke();
+}
+
+//Win-Loss Conditions
 var win = function() {
   alert("You win!");
   location.reload();

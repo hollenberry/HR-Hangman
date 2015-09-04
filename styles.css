@@ -39,11 +39,11 @@ body {
 }
 
 .wrongBox {
-  font-size: 1em;
-  text-align: center;
+  font-size: 3em;
+  text-align: left;
+  padding: 1em;
   color: red;
-  border: red solid .2em;
-  margin-left: 45%;
+  margin-left: 40%;
   margin-right: 45%;
 
 }

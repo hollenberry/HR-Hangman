@@ -5,6 +5,7 @@ $(function() {
   $('.input').keypress(function (e) {
     if (e.which == 13) {
       var guess1 = $('#guess').val();
+      $('#guess').val('');
       onEnter(guess1);
     }
   });
@@ -13,8 +14,7 @@ $(function() {
 //times.
 
 var wordArray = ['Hack', 'Reactor', 'Remote', 'Beta', 'October', 'Fifth',
-'Cohort', 'Javascript', 'CSS', 'HTML', 'San Diego', 'New York City',
-'Prep', 'Sleepless', 'Eminem'];
+'Cohort', 'Javascript', 'CSS', 'HTML','Prep', 'Sleepless', 'Eminem'];
 var currentWord;
 var wrongLetters = [];
 
@@ -45,6 +45,7 @@ updateWord();
 
 function updateWord () {
   $('#prompt').text(currentWord.split("").join(" "));
+  $('.wrongBox').text(wrongLetters);
 };
 
 //Here we have a function that will replace the blanks with letters, after
@@ -61,15 +62,19 @@ function replaceLetter(stringIndex, newLetter, originalString) {
 //This function
 
 function checkLetter (array, guess) {
+  var letterFound = false;
   array.forEach(function(letter, index){
     if (letter == guess.toUpperCase()) {
       currentWord = replaceLetter(index, guess.toUpperCase(), currentWord);
+      letterFound = true;
     } else if (letter == guess.toLowerCase()) {
         currentWord = replaceLetter(index, guess.toLowerCase(), currentWord);
-    } else {
-      wrongLetters.push(guess);
+        letterFound = true;
     }
   });
+  if (!letterFound) {
+    wrongLetters.push(guess);
+  }
   updateWord();
   return currentWord;
 }
@@ -86,8 +91,10 @@ function onEnter (guess) {
 
 var win = function() {
   alert("You win!");
+  location.reload();
 }
 
 var lose = function() {
   alert("You lose!")
+  location.reload();
 }

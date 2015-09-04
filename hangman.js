@@ -1,4 +1,7 @@
 $(document).ready(function(){
+$(function() {
+    $("form").submit(function() { return false; });
+});
   $('.input').keypress(function (e) {
     if (e.which == 13) {
       var guess1 = $('#guess').val();

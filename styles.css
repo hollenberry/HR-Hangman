@@ -1,0 +1,59 @@
+body {
+  height: 100%;
+  background-color: black;
+}
+
+.top {
+  background-color: black;
+  color: white;
+  margin-left: 35%;
+  margin-right: 35%;
+}
+.figure {
+  color: white;
+  padding: 10em;
+  border: blue solid 1em;
+  font-size: 1.2em;
+}
+.scaffold-top {
+  width:6em;
+  height:.5em;
+  background: white;
+}
+.scaffold-left {
+  width: .5em;
+  height: 15em;
+  background: white;
+}
+.scaffold-base {
+  width: 10em;
+  height: .5em;
+  background: sienna;
+}
+
+#prompt {
+  margin-left: 40%;
+  color: white;
+  font-size: 5em;
+  text-align: left;
+}
+
+.wrongBox {
+  font-size: 1em;
+  text-align: center;
+  color: red;
+  border: red solid .2em;
+  margin-left: 45%;
+  margin-right: 45%;
+
+}
+.bottom {
+}
+input[type="text"] {
+  font-size: 1.5em;
+  margin-top: 2%;
+  margin-left:42.5%;
+  border: .25em solid blue;
+  color: blue;
+  text-align: center;
+}

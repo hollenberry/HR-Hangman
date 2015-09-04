@@ -2,8 +2,8 @@ $(document).ready(function(){
   $('.input').keypress(function (e) {
     if (e.which == 13) {
       var guess1 = $('#guess').val();
+      onEnter(guess1);
     }
-    alert (guess1);
   });
 });
 //First I initialize an array so that the user can play the game multiple
@@ -13,7 +13,7 @@ var wordArray = ['Hack', 'Reactor', 'Remote', 'Beta', 'October', 'Fifth',
 'Cohort', 'Javascript', 'CSS', 'HTML', 'San Diego', 'New York City',
 'Prep', 'Sleepless', 'Eminem'];
 var currentWord;
-var wrongLetters;
+var wrongLetters = [];
 
 //After this selection is made, we run our word choice function that
 //will generate a random word from the array. Here, I use the Math.floor
@@ -25,7 +25,7 @@ function wordChoice (array) {
     return array[number];
 }
 
-word = wordChoice(wordArray).split("");
+var word = wordChoice(wordArray).split("");
 
 //Once the word has been produced, I have created a function that will
 //create the proper number of blanks to match the word that has been returned
@@ -38,6 +38,7 @@ function blankGenerator(array) {
 }
 
 currentWord = blankGenerator(word);
+updateWord();
 
 function updateWord () {
   $('#prompt').text(currentWord.split("").join(" "));
@@ -62,13 +63,23 @@ function checkLetter (array, guess) {
       currentWord = replaceLetter(index, guess.toUpperCase(), currentWord);
     } else if (letter == guess.toLowerCase()) {
         currentWord = replaceLetter(index, guess.toLowerCase(), currentWord);
-
+    } else {
+      wrongLetters.push(guess);
     }
   });
   updateWord();
   return currentWord;
 }
 
+function onEnter (guess) {
+  checkLetter(word, guess);
+    if (wrongLetters.length == 5) {
+      lose();
+    }
+    if (word.join("") == currentWord) {
+       win();
+    }
+}
 
 var win = function() {
   alert("You win!");

@@ -6,8 +6,9 @@ body {
 .top {
   background-color: black;
   color: white;
-  margin-left: 35%;
-  margin-right: 35%;
+  /*margin-left: 35%;
+  margin-right: 35%;*/
+  float: left;
 }
 .figure {
   color: white;
@@ -34,6 +35,9 @@ canvas {
   background: sienna;
 }
 
+.middle {
+  float: none;
+}
 #prompt {
   margin-left: 40%;
   color: white;
@@ -47,15 +51,20 @@ canvas {
   padding: 1em;
   color: red;
   margin-left: 40%;
-  margin-right: 45%;
+  /*margin-right: 45%;*/
+  /*float: right;
+  position: relative;*/
 
 }
+
 .bottom {
+  float: none;
+  position: relative;
 }
 input[type="text"] {
   font-size: 1.5em;
-  margin-top: 2%;
-  margin-left:42.5%;
+  /*margin-top: 2%;*/
+  margin-left: 10%;
   border: .25em solid blue;
   color: blue;
   text-align: center;
